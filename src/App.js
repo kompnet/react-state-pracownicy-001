@@ -25,18 +25,23 @@ function App() {
 
 
 ]
+  const [edycja, setEdycja ] = useState({1: false, 2:false, 3:false})
+
   const usunPracownika = (id) => {
     const nowaLista = lista.filter( pracownik => pracownik.id !== id)
     setLista(nowaLista)
   }
 
+  const edytujPracownika = (id) => { 
+      setEdycja(...edycja, edycja[id] = true)
+   }
   const [lista, setLista] = useState(pracownicy)
   return (
   <>
     <ul>
       {
         lista.map( pracownik => (
-          <li key={pracownik.id}>{pracownik.imie} <button onClick={() => (usunPracownika(pracownik.id))}>Usuń</button></li>
+          <li key={pracownik.id}>{edycja}</li>
 
         ))
       }
